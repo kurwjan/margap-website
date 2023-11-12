@@ -1,0 +1,14 @@
+---
+const allOptions = await Astro.glob('../content/services/*.md');
+---
+
+{
+    allOptions.map((option) => (
+        <option value={option.frontmatter.name}>
+            {option.frontmatter.name}
+        </option>
+    ))
+}
+
+<style>
+</style>

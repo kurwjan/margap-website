@@ -1,0 +1,72 @@
+<header>
+    <h1>MarGap</h1>
+    <nav>
+        <a href="#contact">
+            <span class="material-icons-outlined">email</span>
+            <h3>
+                Kontaktiere mich
+            </h3>
+        </a>
+    </nav>
+</header>
+
+<style>
+    header {
+        background-color: rgb(25, 26, 25);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding-left: max(5vw, 2em);
+        padding-right: max(5vw, 2em);
+    }
+
+    h1 {
+        color: rgb(121,85,72);
+        font-family: "Yeseva One", serif;
+        font-variant: small-caps;
+    }
+
+    a {
+
+        display: flex;
+        align-items: center;
+
+        background-color: rgb(121,85,72);
+        border-radius: 15px;
+
+        color: rgb(255, 255, 255);
+
+        font-family: "Inter", sans-serif;
+        font-size: small;
+        text-decoration: none;
+
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+
+    h3 {
+        margin: 0;
+    }
+
+    span {
+        margin-right: 0.5rem;
+    }
+
+    @media (max-width: 513px) {
+        h3 {
+            display: none;
+        }
+
+        span {
+            margin-right: 0;
+        }
+
+        a {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>

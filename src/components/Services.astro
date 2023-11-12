@@ -1,0 +1,45 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+---
+
+<main id="services">
+    <header>
+        <h1>
+            Meine Leistungen
+        </h1>
+    </header>
+    <ServiceCard />
+</main>
+
+<style>
+    main {
+        background-color: rgb(121,85,72);
+        color: white;
+
+        font-family: "Inter", sans-serif;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding-bottom: 2.5em;
+    }
+
+    header {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
+    }
+
+    h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>

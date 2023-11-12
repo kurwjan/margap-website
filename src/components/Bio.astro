@@ -1,0 +1,111 @@
+---
+---
+
+<article>
+    <h1>
+        <span>20 Jahre</span><br>
+        an Erfahrung
+    </h1>
+    <div>
+        <p class="text-content">
+            Meine Arbeit zeichnet sich durch Sauberkeit, Ästhetik und hohe Liebe zum Detail aus.
+            Meine Spezialität und Leidenschaft ist das Streichen und Renovieren von innen und auch von außen.
+            Ich verwende professionelle Werkzeuge.
+        </p>
+        <h3 class="signature">
+            M. Gapinski
+        </h3>
+        <p class="small">
+            Martin Gapinski
+        </p>
+    </div>
+</article>
+
+<style>
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: fit-content;
+
+        align-items: center;
+        justify-content: space-around;
+
+        background-color: rgb(25, 26, 25);
+
+        font-family: "Inter", sans-serif;
+
+        padding-top: 2em;
+        padding-bottom: 2em;
+    }
+
+    figure {
+        margin-top: 1.8rem;
+        margin-bottom: 1.8rem;
+        margin-left: 1.3rem;
+        margin-right: 1.3rem;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        font-family: "Poppins", sans-serif;
+        color: white;
+
+        width: fit-content;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    span {
+        color: rgb(121,85,72);
+    }
+
+    .text-content {
+        color: white;
+        font-size: 1.2rem;
+        max-width: 45vw;
+    }
+
+    @media (max-width: 870px) {
+        article {
+            justify-content: center;
+        }
+
+        div {
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .text-content {
+            text-align: center;
+
+            max-width: 100%;
+            margin-left: 2em;
+            margin-right: 2em;
+        }
+    }
+
+    .signature {
+        color: white;
+
+        font-family: "Meddon", sans-serif;
+        font-size: x-large;
+        
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .small {
+        font-size: 0.85rem;
+        margin-bottom: 0;
+        color: white;
+    }
+</style>

@@ -1,0 +1,341 @@
+---
+import ContactOptions from "./ContactOptions.astro";
+import Success from "./Success.astro";
+---
+
+<section id="contact">
+    <h1>
+        Kontaktiere mich
+    </h1>
+    <div class="row">
+        <form class="gform" method="POST" data-email="kontakt@margap.de" action="https://script.google.com/macros/s/AKfycbynxWlhrWMq6Ped73eQBzaQzl69P-ZdvTWa4jB01GG-JA9mdJ9DJpvYrbRCjRtZhNFXPw/exec">
+            <h3>
+                Ein Angebot anfragen
+            </h3>
+            <div class="row margin">
+                <input required name="Kundenname" autocomplete="name" placeholder="* Name" type="text" class="contact-input" />
+                <input required name="Kundenmail" autocomplete="email" placeholder="* E-Mail" type="email" class="contact-input" />
+            </div>
+            <div class="row margin">
+                <input required name="Kundennummer" autocomplete="tel" placeholder="* Telefonnummer" type="tel" class="contact-input" />
+                <select required name="Beanspruchter Service" autocomplete="off" class="contact-input dropdown-input">
+                    <option value="" disabled selected>* Service auswählen</option>
+                    <ContactOptions />
+                </select>
+            </div>
+            <textarea required name="Nachricht" autocomplete="off" placeholder="* Nachricht mit Details...." rows="6" cols="48" class="message margin contact-input" />
+            <input value="Anfrage einreichen" type="submit" class="button-input" />
+
+            <Success />
+        </form>
+        <aside>
+            <h3>
+                Kontakt Info
+            </h3>
+            <hgroup>
+                <h4>Meine Adresse</h4>
+                <p>
+                    Martin Gapinski<br>
+                    Im Fuchsloch 3<br>
+                    60437 Frankfurt am Main<br>
+                </p>
+            </hgroup>
+            <hgroup>
+                <h4>Kontakt</h4>
+                <p>
+                    <b>Email:</b><br> <i>kontakt@margap.de</i><br>
+                    <b>Telefonnummer:</b><br> <i>+49 157 59141563</i>
+                </p>
+            </hgroup>
+            <hgroup>
+                <h4>Öffnungszeiten</h4>
+                <p>
+                    Montag - Samstag<br>
+                    7 Uhr - 18 Uhr
+                </p>
+            </hgroup>
+        </aside>
+    </div>
+</section>
+
+<style>
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        font-family: "Inter", sans-serif;
+        color: white;
+
+        background-image:
+        url('../images/unfertiges_haus.webp'),
+        linear-gradient(to bottom, rgb(25, 26, 25), rgba(25, 26, 25, 0.35));
+        background-blend-mode: multiply;
+        background-position: center;
+        background-size: cover;
+
+        padding: 1.5em;
+    }
+
+    h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: xx-large;
+
+        margin-top: 2.5rem;
+    }
+
+    form {
+        background-color: rgb(121,85,72);
+
+        border-radius: 15px;
+
+        padding-top: 0.5rem;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-bottom: 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+        
+        width: max(50vw, 20em);
+    }
+
+    @media (max-width: 405px) {
+        form {
+            padding-left: 1.2em;
+            padding-right: 1.2em;
+        }
+    }
+
+    h3 {
+        font-family: "Poppins", sans-serif;
+
+        margin-left: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1em;
+
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    input {
+        flex: auto;
+    }
+
+    .margin {
+        margin-bottom: 1rem;
+    }
+
+    .contact-input {
+        font-family: "Inter", sans-serif;
+
+        background-color: white;
+
+        border-radius: 15px;
+
+        padding-right: 3.5rem;
+        padding-left: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        border: solid transparent;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .contact-input:focus {
+        border: solid lightgray;
+    }
+
+    .dropdown-input {
+        padding-right: 5.7rem;
+        border-right: 1rem solid transparent;
+        flex-grow: 1;
+    }
+
+    .dropdown-input:focus {
+        border-right: 1rem solid transparent;
+    }
+
+    .dropdown-input:invalid {
+        color: rgb(106, 106, 106);
+    }
+
+    .message {
+        resize: none;
+    }
+
+    .button-input {
+        font-family: "Inter", sans-serif;
+        color: white;
+        
+        border: none;
+        border-radius: 15px;
+
+        padding: 1rem;
+
+        background-color: rgb(25, 26, 25);
+    }
+
+    .button-input:hover {
+        background-color: rgb(43, 44, 43);
+
+        cursor: pointer;
+    }
+
+    .button-input:disabled {
+        background-color: rgb(43, 44, 43);
+
+        cursor: default;
+    }
+
+    aside {
+        background-color: rgb(121,85,72);
+
+        border-radius: 15px;
+
+        padding-top: 0.5rem;
+        padding-left: 2.0rem;
+        padding-right: 2rem;
+        padding-bottom: 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+
+        height: fit-content;
+        
+        flex-grow: 0.4;
+    }
+
+    h4 {
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 0.5rem;
+        margin-top: 1.0rem;
+    }
+
+    p {
+        font-family: "Inter", sans-serif;
+        margin-top: 0.5rem;
+    }
+
+</style>
+
+<script data-cfasync="false" type="text/javascript">
+    (function() {
+  // get all data in form and return object
+  function getFormData(form) {
+    var elements = form.elements;
+    var honeypot;
+
+    var fields = Object.keys(elements).filter(function(k) {
+      if (elements[k].name === "honeypot") {
+        honeypot = elements[k].value;
+        return false;
+      }
+      return true;
+    }).map(function(k) {
+      if(elements[k].name !== undefined) {
+        return elements[k].name;
+      // special case for Edge's html collection
+      }else if(elements[k].length > 0){
+        return elements[k].item(0).name;
+      }
+    }).filter(function(item, pos, self) {
+      return self.indexOf(item) == pos && item;
+    });
+
+    var formData = {};
+    fields.forEach(function(name){
+      var element = elements[name];
+      
+      // singular form elements just have one value
+      formData[name] = element.value;
+
+      // when our element has multiple items, get their values
+      if (element.length) {
+        var data = [];
+        for (var i = 0; i < element.length; i++) {
+          var item = element.item(i);
+          if (item.checked || item.selected) {
+            data.push(item.value);
+          }
+        }
+        formData[name] = data.join(', ');
+      }
+    });
+
+    // add form-specific values into the data
+    formData.formDataNameOrder = JSON.stringify(fields);
+    formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
+    formData.formGoogleSendEmail
+      = form.dataset.email || ""; // no email by default
+
+    return {data: formData, honeypot: honeypot};
+  }
+
+  function handleFormSubmit(event) {  // handles form submit without any jquery
+    event.preventDefault();           // we are submitting via xhr below
+    var form = event.target;
+    var formData = getFormData(form);
+    var data = formData.data;
+
+    // If a honeypot field is filled, assume it was done so by a spam bot.
+    if (formData.honeypot) {
+      return false;
+    }
+
+    var formButton = form.querySelector(".button-input");
+    formButton.disabled = true;
+    formButton.value = "Anfrage eingereicht";
+
+    var thankYouMessage = form.querySelector(".thankyou_message");
+    if (thankYouMessage) {
+      thankYouMessage.style.display = "block";
+    }
+
+    disableAllButtons(form);
+    var url = form.action;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    // xhr.withCredentials = true;
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          form.reset();
+          var formElements = form.querySelector(".form-elements")
+          if (formElements) {
+            formElements.style.display = "none"; // hide form
+          }
+          thankYouMessage.querySelector("h3").textContent = "Danke für das Einreichen! Ich werde Ihnen bald antworten.";
+        }
+    };
+    // url encode form data for sending as post data
+    var encoded = Object.keys(data).map(function(k) {
+        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+    }).join('&');
+    xhr.send(encoded);
+  }
+  
+  function loaded() {
+    // bind to the submit event of our form
+    var forms = document.querySelectorAll("form.gform");
+    for (var i = 0; i < forms.length; i++) {
+      forms[i].addEventListener("submit", handleFormSubmit, false);
+    }
+  };
+  document.addEventListener("DOMContentLoaded", loaded, false);
+
+  function disableAllButtons(form) {
+    var buttons = form.querySelectorAll("button");
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = true;
+    }
+  }
+})();
+</script>

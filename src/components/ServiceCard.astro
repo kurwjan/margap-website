@@ -1,0 +1,108 @@
+---
+const allServices = await Astro.glob('../content/services/*.md');
+
+import { Image } from 'astro:assets';
+
+//import testImage from "../images/test.png";
+import bodenlegereiImage from "../images/leerer_raum_mit_boden.webp";
+import brandschutzImage from "../images/kellerraum_mit_brandschutz.webp";
+import hausmeisterserviceImage from "../images/grundstück_mit_traktor.webp";
+import renovierungImage from "../images/renoviertes_badezimmer.webp";
+import trockenbauImage from "../images/unfertiger_raum.webp";
+const images = [bodenlegereiImage, brandschutzImage, hausmeisterserviceImage, renovierungImage, trockenbauImage];
+---
+
+{
+    allServices.map((service, index) => (
+        <figure id={service.frontmatter.name.toLowerCase()}>
+            <div class="image-overlay">
+                <Image src={images[index]} alt={service.frontmatter.alt} class={service.frontmatter.name.toLowerCase()}/>
+            </div>
+            <figcaption>
+                <hgroup>
+                    <h2>
+                        {service.frontmatter.name}
+                    </h2>
+                    <p>
+                        {service.frontmatter.description}
+                    </p>
+                </hgroup>
+            </figcaption>
+        </figure>
+    ))
+}
+
+<style>
+    figure {
+        position: relative;
+
+        width: fit-content;
+
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    img {
+        position: relative;
+
+        width: 80vw;
+        height: 30em;
+
+        object-fit: cover;
+
+        border-radius: 15px;
+    }
+
+    .bodenlegerei {
+        object-position: 50% 60%;
+    }
+
+    .brandschutz {
+        object-position: 50% 25%;
+    }
+
+    .renovierung {
+        object-position: center;
+    }
+
+    figcaption {
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    hgroup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 0;
+        font-family: "Poppins", sans-serif;
+        font-size: x-large;
+    }
+
+    @media (max-width: 530px) {
+        p {
+            width: 15em;
+        }
+    }
+
+    .image-overlay::after {
+        content: '';
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(to top, rgb(25, 26, 25), rgba(25, 26, 25, 0));
+
+        border-radius: 15px;
+    }
+</style>
