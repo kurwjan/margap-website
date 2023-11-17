@@ -1,0 +1,11 @@
+---
+const allOptions = await Astro.glob('../../content/services/*.md');
+
+const { selected } = Astro.props
+---
+
+{
+    allOptions.map((option) => (
+        selected == option.frontmatter.name ? <option selected="selected" value={option.frontmatter.name}>{option.frontmatter.name}</option> : <option value={option.frontmatter.name}>{option.frontmatter.name}</option>
+    ))
+}

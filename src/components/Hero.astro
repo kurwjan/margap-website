@@ -1,43 +1,67 @@
 ---
+import { Image } from "astro:assets";
+const { heading, description, image, alt, button, position } = Astro.props
 ---
 
 <aside>
-    <hgroup>
-        <h1>
-            Dein <span>Handwerker</span><br>
-            vor Ort
-        </h1>
-        <p>
-            Top Service alles aus einer Hand, hochwertige Baustoffe
-            und bezahlbare Preise.
-        </p>
-    </hgroup>
-    <a href="#services">
-        Meine Leistungen
-        <span class="material-icons-outlined">arrow_circle_right</span>
-    </a>
+    <div class="image-overlay"></div>
+        <Image src={ image } alt={ alt } />
+    </div>
+    <div class="padding">
+        <hgroup>
+            <h1 set:html={heading}>
+            </h1>
+            <p>
+                { description }
+            </p>
+        </hgroup>
+        <a href={ button["href"] }>
+            { button["text"] }
+            <span class="material-icons-outlined">arrow_circle_right</span>
+        </a>
+    </div>
 </aside>
 
-<style>
+<style define:vars={{position}}>
     aside {
+        display: flex;
+        flex-direction: column;
+
+        font-family: "Inter", sans-serif;
+    }
+
+    .image-overlay::after {
+        content: '';
+
+        position: absolute;
+
+        width: 100%;
+        height: 45em;
+
+        background: linear-gradient(to right, rgb(25, 26, 25), rgba(25, 26, 25, 0.35));
+
+        z-index: -1;
+    }
+
+    img {
+        pointer-events: none;
+        position: absolute;
+        object-fit: cover;
+        object-position: var(--position);
+
+        width: 100%;
+        height: 45em;
+
+        z-index: -2;
+    }
+
+    .padding {
         display: flex;
         flex-direction: column;
 
         padding-top: 7rem;
         padding-bottom: 7rem;
         padding-left: max(5vw, 0.5rem);
-
-        font-family: "Inter", sans-serif;
-
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-
-        background-image:
-        url('../images/haus_mit_gerüst.webp'),
-        linear-gradient(to right, rgb(25, 26, 25), rgba(25, 26, 25, 0.35));
-        background-size: cover;
-        background-blend-mode: multiply;
     }
 
     hgroup {
@@ -51,10 +75,6 @@
         margin-bottom: 2rem;
 
         font-family: "Poppins", sans-serif;
-    }
-
-    h1 > span {
-        color: rgb(121,85,72);
     }
 
     p {
@@ -88,7 +108,7 @@
     }
 
     @media (max-width: 545px) {
-        aside {
+        .padding {
             padding-left: 1em;
             padding-right: 1em;
 
@@ -102,6 +122,10 @@
 
         p {
             text-align: center;
+        }
+
+        .image-overlay::after {
+            background: linear-gradient(to bottom, rgb(25, 26, 25), rgba(25, 26, 25, 0.6));
         }
     }
 

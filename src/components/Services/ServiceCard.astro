@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from "astro:content";
+const allServices = await getCollection("services");
+---
+
+{
+    allServices.map((service) => (
+        <figure id={service.data.name.toLowerCase()}>
+            <div class="image-overlay">
+                <Image src={service.data.image} alt={service.data.alt} class={service.data.name.toLowerCase()}/>
+            </div>
+            <figcaption>
+                <h2>
+                    {service.data.name}
+                </h2>
+                <a href={"/services/" + service.data.name.toLowerCase()}>
+                    <h3>
+                        Mehr Infos
+                    </h3>
+                    <span class="material-icons-outlined">arrow_circle_right</span>
+                </a>
+            </figcaption>
+        </figure>
+    ))
+}
+
+<style>
+    figure {
+        position: relative;
+
+        width: fit-content;
+
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    img {
+        position: relative;
+
+        width: 80vw;
+        height: 30em;
+
+        object-fit: cover;
+
+        border-radius: 15px;
+    }
+
+    a {
+
+        display: flex;
+        align-items: center;
+
+        background-color: rgba(25, 26, 25, 0.6);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 15px;
+
+        color: rgb(255, 255, 255);
+
+        text-decoration: none;
+
+        font-family: "Inter", sans-serif;
+        font-size: small;
+
+        margin-top: 1.2em;
+
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+    }
+
+    a > span {
+        padding-left: 0.5rem;
+    }
+
+    h3 {
+        margin: 0;
+        width: max-content;
+
+        font-weight: 400;
+    }
+
+    .bodenlegerei {
+        object-position: 50% 60%;
+    }
+
+    .brandschutz {
+        object-position: 50% 25%;
+    }
+
+    .renovierung {
+        object-position: center;
+    }
+
+    figcaption {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    h2 {
+        margin-bottom: 0;
+        font-family: "Poppins", sans-serif;
+        font-size: x-large;
+    }
+
+    @media (max-width: 530px) {
+        p {
+            width: 15em;
+        }
+    }
+
+    .image-overlay::after {
+        content: '';
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(to top, rgb(25, 26, 25), rgba(25, 26, 25, 0));
+
+        border-radius: 15px;
+    }
+</style>

@@ -1,6 +1,8 @@
 ---
 import ContactOptions from "./ContactOptions.astro";
-import Success from "./Success.astro";
+import Success from "../Success.astro";
+
+const { service } = Astro.props
 ---
 
 <section id="contact">
@@ -18,9 +20,9 @@ import Success from "./Success.astro";
             </div>
             <div class="row margin">
                 <input required name="Kundennummer" autocomplete="tel" placeholder="* Telefonnummer" type="tel" class="contact-input" />
-                <select required name="Beanspruchter Service" autocomplete="off" class="contact-input dropdown-input">
-                    <option value="" disabled selected>* Service auswählen</option>
-                    <ContactOptions />
+                <select required value={ service? service : "" } name="Beanspruchter Service" autocomplete="off" class="contact-input dropdown-input">
+                    { service? "" : <option value="" disabled selected>* Service auswählen</option> }
+                    <ContactOptions selected={ service }/>
                 </select>
             </div>
             <textarea required name="Nachricht" autocomplete="off" placeholder="* Nachricht mit Details...." rows="6" cols="48" class="message margin contact-input" />
@@ -68,7 +70,7 @@ import Success from "./Success.astro";
         color: white;
 
         background-image:
-        url('../images/unfertiges_haus.webp'),
+        url("../../images/unfertiges_haus.webp"),
         linear-gradient(to bottom, rgb(25, 26, 25), rgba(25, 26, 25, 0.35));
         background-blend-mode: multiply;
         background-position: center;

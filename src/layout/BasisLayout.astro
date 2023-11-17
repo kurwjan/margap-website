@@ -1,0 +1,103 @@
+---
+import Header from '../components/Header.astro';
+
+import '@fontsource/yeseva-one/400.css'
+import '@fontsource/inter/400.css'
+import '@fontsource/poppins/600.css'
+import '@fontsource/meddon/400.css'
+import 'material-icons/iconfont/material-icons.css';
+import SEOComponent from "../components/SEOComponent.astro";
+
+import haus_mit_gerüst from "../images/haus_mit_gerüst.webp";
+import unfertiger_raum from "../images/unfertiger_raum.webp";
+import unfertiges_haus from "../images/unfertiges_haus.webp";
+import renoviertes_badezimmer from "../images/renoviertes_badezimmer.webp";
+
+const { title, description, url, image, alt } = Astro.props
+---
+
+<html lang="de">
+	<head>
+		<SEOComponent 
+			title={ title }
+			description={ description }
+			url={ url }
+			image={ image }
+			alt={ alt }
+		/>
+
+		<script type="application/ld+json" set:html=
+		{
+			JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "HomeAndConstructionBusiness",
+				"name": "MarGap - Dein Handwerker vor Ort",
+				"image": [
+					"https://margap.de" + haus_mit_gerüst.src,
+					"https://margap.de" + unfertiger_raum.src,
+					"https://margap.de" + unfertiges_haus.src,
+					"https://margap.de" + renoviertes_badezimmer.src
+				],
+				"address": {
+					"@type": "PostalAddress",
+					"addressCountry": "DE",
+					"addressLocality": "Frankfurt",
+					"addressRegion": "Hessen",
+					"postalCode": "60437",
+					"streetAddress": "Im Fuchsloch 3"
+				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": 50.207745,
+					"longitude": 8.703473
+				},
+				"url": "https://margap.de/",
+				"telephone": "+4915759141563",
+				"priceRange": "$$",
+				"openingHoursSpecification": [
+					{
+						"@type": "OpeningHoursSpecification",
+						"dayOfWeek": [
+							"Monday",
+							"Tuesday",
+							"Wednesday",
+							"Thursday",
+							"Friday",
+							"Staturday"
+						],
+						"opens": "7:00",
+						"closes": "18:00"
+					}
+				]
+			})
+		}
+		/>
+
+		<meta name="author" content="Martin Gapinski" />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		
+		<link rel="sitemap" href="/sitemap-0.xml">
+
+		<meta name="viewport" content="initial-scale=1.0, width=device-width">
+		<meta name="generator" content={Astro.generator} />
+	</head>
+	<body>
+        <Header />
+        <slot />
+	</body>
+</html>
+
+<style>
+	html {
+		scroll-behavior: smooth;
+	}
+	html, body {
+		margin: 0;
+		padding: 0;
+	}
+</style>

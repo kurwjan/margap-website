@@ -1,132 +1,31 @@
 ---
-import { SEO } from "astro-seo";
-
-import Header from '../components/Header.astro';
+import BasisLayout from '../layout/BasisLayout.astro';
 import Hero from '../components/Hero.astro';
 import Bio from '../components/Bio.astro';
-import Services from '../components/Services.astro';
-import Contact from '../components/Contact.astro';
+import Services from '../components/Services/Services.astro';
+import Contact from '../components/Contact/Contact.astro';
 import Footer from '../components/Footer.astro';
 
-import '@fontsource/yeseva-one/400.css'
-import '@fontsource/inter/400.css'
-import '@fontsource/poppins/600.css'
-import '@fontsource/meddon/400.css'
-import 'material-icons/iconfont/material-icons.css';
+import hero_image from '../images/haus_mit_gerüst.webp';
 ---
 
-<html lang="de">
-	<head>
-		<SEO
-			title="MarGap - Dein Handwerker vor Ort"
-			description="MarGap ist dein Handwerker vor Ort mit Qualität und fairen Preisen. Ich kann reparieren, renovieren, Boden legen, Trockenbau machen und hat ein Zertifikat im Brandschutz."
-			charset="utf-8"
-			canonical={"/"}
-			openGraph={
-				{
-					basic: {
-						title: "MarGap - Dein Handwerker vor Ort",
-						type: "website",
-						image: "https://margap.de/images/haus_mit_gerüst.jpeg",
-						url: "https://margap.de/"
-					},
-					optional: {
-						description: "MarGap ist dein Handwerker vor Ort mit Qualität und fairen Preisen. Ich kann reparieren, renovieren, Boden legen, Trockenbau machen und hat ein Zertifikat im Brandschutz.",
-						locale: "de_DE",
-					},
-					image: {
-						alt: "Das grau-weiße Haus mit Gerüsten und Leitern außenherum, wo die Firma ihren Sitz hat. Der Parkplatz vor dem Haus (außer Fahrräder) ist leer.",
-						type: "image/webp",
-						width: 2048,
-						height: 1536,
-					},
-				}
-			}
-			twitter={
-				{
-					card: "summary_large_image",
-					title: "MarGap - Dein Handwerker vor Ort",
-					image: "https://margap.de/images/haus_mit_gerüst.jpeg",
-					imageAlt: "Das grau-weiße Haus mit Gerüsten und Leitern außenherum, wo die Firma ihren Sitz hat. Der Parkplatz vor dem Haus (außer Fahrräder) ist leer.",
-					description: "MarGap ist dein Handwerker vor Ort mit Qualität und fairen Preisen. Ich kann reparieren, renovieren, Boden legen, Trockenbau machen und hat ein Zertifikat im Brandschutz.",
-				}
-			}
-		/>
-
-		<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "HomeAndConstructionBusiness",
-			"name": "MarGap - Dein Handwerker",
-			"image": [
-				"https://margap.de/images/haus_mit_gerüst.jpeg",
-				"https://margap.de/images/unfertiger_raum.webp",
-				"https://margap.de/images/unfertiges_haus.webp",
-				"https://margap.de/images/renoviertes_badezimmer.webp"
-			],
-			"address": {
-				"@type": "PostalAddress",
-				"addressCountry": "DE",
-				"addressLocality": "Frankfurt",
-				"addressRegion": "Hessen",
-				"postalCode": "60437",
-				"streetAddress": "Im Fuchsloch 3"
-			},
-			"geo": {
-				"@type": "GeoCoordinates",
-				"latitude": 50.207745,
-				"longitude": 8.703473
-			},
-			"url": "https://margap.de/",
-			"telephone": "+4915759141563",
-			"priceRange": "$$$",
-			"openingHoursSpecification": [
-				{
-					"@type": "OpeningHoursSpecification",
-					"dayOfWeek": [
-						"Monday",
-						"Tuesday",
-						"Wednesday",
-						"Thursday",
-						"Friday",
-						"Staturday"
-					],
-					"opens": "7:00",
-					"closes": "18:00"
-				}
-			]
-		}
-		</script>
-
-		<meta name="author" content="Martin Gapinski" />
-
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/x-icon" href="/favicon.ico">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="manifest" href="/site.webmanifest">
-		
-		<link rel="sitemap" href="/sitemap-index.xml">
-
-		<meta name="viewport" content="initial-scale=1.0, width=device-width">
-		<meta name="generator" content={Astro.generator} />
-	</head>
-	<body>
-		<Header />
-		<Hero />
-		<Bio />
-		<Services />
-		<Contact />
-		<Footer />
-	</body>
-</html>
-
-<style>
-	html {
-		scroll-behavior: smooth;
-	}
-	html, body {
-		margin: 0;
-		padding: 0;
-	}
-</style>
+<BasisLayout
+	title="MarGap - Dein Handwerker vor Ort"
+	description="MarGap ist dein Handwerker vor Ort mit Qualität und fairen Preisen. Ich kann reparieren, renovieren, Boden legen, Trockenbau machen und hat ein Zertifikat im Brandschutz."
+	url="https://margap.de/"
+	image={ "https://margap.de/services" + hero_image.src }
+	alt="Das grau-weiße Haus mit Gerüsten und Leitern außenherum, wo die Firma ihren Sitz hat. Der Parkplatz vor dem Haus (außer Fahrräder) ist leer."
+>
+	<Hero
+		heading={'Dein <span style="color: rgb(121,85,72);">Handwerker</span><br>vor Ort'} 
+		description={"Top Service alles aus einer Hand, hochwertige Baustoffe und bezahlbare Preise."} 
+		image={ hero_image } 
+		alt={"Das grau-weiße Haus mit Gerüsten und Leitern außenherum, wo die Firma ihren Sitz hat. Der Parkplatz vor dem Haus (außer Fahrräder) ist leer."}
+		button={ {"href": "#services", "text": "Meine Leistungen"} }
+		position="center"
+	/>
+	<Bio />
+	<Services />
+	<Contact />
+	<Footer />
+</BasisLayout>

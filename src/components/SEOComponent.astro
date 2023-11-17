@@ -1,0 +1,38 @@
+---
+import { SEO } from "astro-seo";
+const { title, description, url, image, alt } = Astro.props
+---
+
+<SEO
+	title={ title }
+	description={ description }
+	charset="utf-8"
+	canonical={ url }
+	openGraph={
+		{
+			basic: {
+				title: title,
+				type: "website",
+				image: image,
+				url: url,
+			},
+			optional: {
+				description: description,
+				locale: "de_DE",
+			},
+			image: {
+				alt: alt,
+				type: "image/webp",
+			},
+		}
+	}
+	twitter={
+		{
+			card: "summary_large_image",
+			title: title,
+			image: image,
+			imageAlt: alt,
+			description: description,
+		}
+	}
+/>

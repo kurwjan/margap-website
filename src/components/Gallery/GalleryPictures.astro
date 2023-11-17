@@ -1,30 +1,18 @@
 ---
-const allServices = await Astro.glob('../content/services/*.md');
-
-import { Image } from 'astro:assets';
-
-//import testImage from "../images/test.png";
-import bodenlegereiImage from "../images/leerer_raum_mit_boden.webp";
-import brandschutzImage from "../images/kellerraum_mit_brandschutz.webp";
-import hausmeisterserviceImage from "../images/grundstück_mit_traktor.webp";
-import renovierungImage from "../images/renoviertes_badezimmer.webp";
-import trockenbauImage from "../images/unfertiger_raum.webp";
-const images = [bodenlegereiImage, brandschutzImage, hausmeisterserviceImage, renovierungImage, trockenbauImage];
+import { Image } from "astro:assets";
+const { images, descriptions } = Astro.props;
 ---
 
 {
-    allServices.map((service, index) => (
-        <figure id={service.frontmatter.name.toLowerCase()}>
+    images.map((image, index) => (
+        <figure>
             <div class="image-overlay">
-                <Image src={images[index]} alt={service.frontmatter.alt} class={service.frontmatter.name.toLowerCase()}/>
+                <Image src={image} alt={descriptions[index]}/>
             </div>
             <figcaption>
                 <hgroup>
-                    <h2>
-                        {service.frontmatter.name}
-                    </h2>
                     <p>
-                        {service.frontmatter.description}
+                        {descriptions[index]}
                     </p>
                 </hgroup>
             </figcaption>
@@ -36,7 +24,7 @@ const images = [bodenlegereiImage, brandschutzImage, hausmeisterserviceImage, re
     figure {
         position: relative;
 
-        width: fit-content;
+        width: max(25vw, 21em);
 
         margin-left: 2rem;
         margin-right: 2rem;
@@ -45,24 +33,12 @@ const images = [bodenlegereiImage, brandschutzImage, hausmeisterserviceImage, re
     img {
         position: relative;
 
-        width: 80vw;
+        width: max(25vw, 21em);
         height: 30em;
 
         object-fit: cover;
 
         border-radius: 15px;
-    }
-
-    .bodenlegerei {
-        object-position: 50% 60%;
-    }
-
-    .brandschutz {
-        object-position: 50% 25%;
-    }
-
-    .renovierung {
-        object-position: center;
     }
 
     figcaption {
