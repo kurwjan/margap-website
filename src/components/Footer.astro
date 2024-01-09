@@ -1,6 +1,12 @@
+---
+---
+
 <footer>
-    <h2>MarGap</h2>
-    <small>Copyright © 2023 Martin Gapinski.</small>
+    <div>
+        <h2>C.L.B</h2>
+        <h2 class="footer-logo-industry">Gebäude Service</h2>
+    </div>
+    <small>Copyright © 2023 VORNAME NACHNAME.</small> <!-- TODO: CHANGE -->
 </footer>
 
 <style>
@@ -13,22 +19,33 @@
         padding-left: 2rem;
         padding-right: 2rem;
 
-        background-color: rgb(25, 26, 25);
-        color: white;
+        background-color: rgb(229, 232, 255);
+        color: rgb(0, 24, 49);
 
-        font-family: "Inter", sans-serif;
+        font-family: "Open Sans", sans-serif;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
     }
 
     h2 {
-        font-family: "Yeseva One", serif;
-        font-variant: small-caps;
+        font-family: "Merriweather", serif;
 
         margin-top: 0.8rem;
         margin-bottom: 0.8rem;
     }
 
+    .footer-logo-industry {
+        padding-left: 0.65em;
+
+        font-size: medium;
+    }
+
     small {
-        color: grey;
+        color: rgb(74, 87, 112);
+        text-align: end;
     }
 
     @media (max-width: 415px) {

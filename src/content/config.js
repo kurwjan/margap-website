@@ -6,9 +6,9 @@ const serviceCollection = defineCollection({
     schema: ({ image }) => z.object({
         name: z.string(),
         description: z.string(),
-        image: image(),
+        image: z.string(),
         alt: z.string(),
-        gallery: z.array(image()),
+        gallery: z.array(z.string()),
         gallery_descriptions: z.array(z.string()),
     })
 });

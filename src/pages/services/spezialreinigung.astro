@@ -1,10 +1,11 @@
 ---
 import { getEntry } from "astro:content";
 import ServiceLayout from "../../layout/ServiceLayout.astro";
-const service = await getEntry("services", "renovierung");
+const service = await getEntry("services", "spezialreinigung");
 ---
 
 <ServiceLayout
     service={ service }
-    title="MarGap - Renuvierungsservice mit Qualität"
+    title="MarGap - Dein Bodenleger in Hessen"
+    position="bottom"
 ></ServiceLayout>

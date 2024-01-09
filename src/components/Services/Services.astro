@@ -7,20 +7,33 @@ import ServiceCard from "./ServiceCard.astro";
         <h1>
             Meine Leistungen
         </h1>
+        <nav>
+            <a href="#">
+                Mehr Details
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" height="19" width="19" viewBox="0 0 512 512"><path fill="#ffe9e9" d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM294.6 135.1c-4.2-4.5-10.1-7.1-16.3-7.1C266 128 256 138 256 150.3V208H160c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h96v57.7c0 12.3 10 22.3 22.3 22.3c6.2 0 12.1-2.6 16.3-7.1l99.9-107.1c3.5-3.8 5.5-8.7 5.5-13.8s-2-10.1-5.5-13.8L294.6 135.1z"/></svg>
+            </a>
+            <a href="#">
+                Galerie
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" height="19" width="19" viewBox="0 0 512 512"><path fill="#ffe9e9" d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM294.6 135.1c-4.2-4.5-10.1-7.1-16.3-7.1C266 128 256 138 256 150.3V208H160c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h96v57.7c0 12.3 10 22.3 22.3 22.3c6.2 0 12.1-2.6 16.3-7.1l99.9-107.1c3.5-3.8 5.5-8.7 5.5-13.8s-2-10.1-5.5-13.8L294.6 135.1z"/></svg>
+            </a>
+        </nav>
     </header>
-    <ServiceCard />
+    <div>
+        <ServiceCard />
+    </div>
 </main>
 
 <style>
     main {
-        background-color: rgb(121,85,72);
-        color: white;
+        background-color: rgb(67, 88, 211);
+        color: rgb(232, 240, 255);
 
-        font-family: "Inter", sans-serif;
+        font-family: "Open Sans", sans-serif;
+
+        border-radius: 15px;
 
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         padding-bottom: 2.5em;
     }
@@ -29,17 +42,53 @@ import ServiceCard from "./ServiceCard.astro";
         margin-left: 1rem;
         margin-right: 1rem;
         margin-top: 1rem;
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    nav {
+        display: flex;
+        gap: 1em;
+    }
+
+    a {
+        background-color: rgb(218, 68, 68);
+        color: rgb(255, 233, 233);
+
+        border-radius: 10px;
+
+        font-family: "Open Sans", sans-serif;
+        font-size: large;
+        text-decoration: none;
+
+        padding: 0.8rem 1.3rem;
+
+        display: flex;
+        align-items: center;
+    }
+
+    a:hover {
+        background-color: rgb(227, 94, 94);
+    }
+
+    .icon {
+        padding-left: 0.7rem;
     }
 
     h1 {
-        font-family: "Poppins", sans-serif;
+        font-family: "Nunito", sans-serif;
         font-size: 2.5rem;
         text-align: center;
     }
 
     div {
         display: flex;
-        align-items: center;
-        flex-direction: column;
+        flex-wrap: wrap;
+
+        justify-content: center;
     }
 </style>

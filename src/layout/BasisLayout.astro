@@ -1,17 +1,13 @@
 ---
 import Header from '../components/Header.astro';
 
-import '@fontsource/yeseva-one/400.css'
-import '@fontsource/inter/400.css'
-import '@fontsource/poppins/600.css'
-import '@fontsource/meddon/400.css'
-import 'material-icons/iconfont/material-icons.css';
+import '@fontsource/merriweather/400.css'
+import '@fontsource/open-sans/400.css'
+import '@fontsource/nunito/800.css'
+import '@fontsource/windsong/400.css'
 import SEOComponent from "../components/SEOComponent.astro";
 
-import haus_mit_gerüst from "../images/haus_mit_gerüst.webp";
-import unfertiger_raum from "../images/unfertiger_raum.webp";
-import unfertiges_haus from "../images/unfertiges_haus.webp";
-import renoviertes_badezimmer from "../images/renoviertes_badezimmer.webp";
+const test_image = "/images/test.png";
 
 const { title, description, url, image, alt } = Astro.props
 ---
@@ -26,6 +22,7 @@ const { title, description, url, image, alt } = Astro.props
 			alt={ alt }
 		/>
 
+		<!-- TODO: CHANGE -->
 		<script type="application/ld+json" set:html=
 		{
 			JSON.stringify({
@@ -33,10 +30,7 @@ const { title, description, url, image, alt } = Astro.props
 				"@type": "HomeAndConstructionBusiness",
 				"name": "MarGap - Dein Handwerker vor Ort",
 				"image": [
-					"https://margap.de" + haus_mit_gerüst.src,
-					"https://margap.de" + unfertiger_raum.src,
-					"https://margap.de" + unfertiges_haus.src,
-					"https://margap.de" + renoviertes_badezimmer.src
+					"https://margap.de" + test_image,
 				],
 				"address": {
 					"@type": "PostalAddress",
@@ -73,7 +67,7 @@ const { title, description, url, image, alt } = Astro.props
 		}
 		/>
 
-		<meta name="author" content="Martin Gapinski" />
+		<meta name="author" content="VORNAME NACHNAME" /> <!-- TODO: CHANGE -->
 
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -96,8 +90,33 @@ const { title, description, url, image, alt } = Astro.props
 	html {
 		scroll-behavior: smooth;
 	}
+
 	html, body {
 		margin: 0;
 		padding: 0;
 	}
+
+	body {
+		background-color: rgb(229, 232, 255);
+	}
 </style>
+
+<script>
+	console.log(`       ,--.                                                ,---._                          ,--.
+   ,--/  /|              ,-.----.             .---.      .-- -.' \\    ,---,              ,--.'|
+,---,': / '         ,--, \\    /  \\           /. ./|      |    |   :  '  .' \\         ,--,:  : |
+:   : '/ /        ,'_ /| ;   :    \\      .--'.  ' ;      :    ;   | /  ;    '.    ,\`--.'\`|  ' :
+|   '   ,    .--. |  | : |   | .\\ :     /__./ \\ : |      :        |:  :       \\   |   :  :  | |
+'   |  /   ,'_ /| :  . | .   : |: | .--'.  '   \\' .      |    :   ::  |   /\\   \\  :   |   \\ | :
+|   ;  ;   |  ' | |  . . |   |  \\ :/___/ \\ |    ' '      :         |  :  ' ;.   : |   : '  '; |
+:   '   \\  |  | ' |  | | |   : .  /;   \\  \\;      :      |    ;   ||  |  ;/  \\   \\'   ' ;.    ;
+|   |    ' :  | | :  ' ; ;   | |  \\ \\   ;  \`      |  ___ l         '  :  | \\  \\ ,'|   | | \\   |
+'   : |.  \\|  ; ' |  | ' |   | ;\\  \\ .   \\    .\\  ;/    /\\    J   :|  |  '  '--'  '   : |  ; .'
+|   | '_\\.':  | : ;  ; | :   ' | \\.'  \\   \\   ' \\ /  ../  \`..-    ,|  :  :        |   | '\`--'
+'   : |    '  :  \`--'   \\:   : :-'     :   '  |--"\\    \\         ; |  | ,'        '   : |
+;   |,'    :  ,      .-./|   |.'        \\   \\ ;    \\    \\      ,'  \`--''          ;   |.'
+'---'       \`--\`----'    \`---'           '---"      "---....--'                   '---'
+#----------------------------------------------------------------------------------------------#
+Made by Dacjan Gapinski (https://github.com/kurwjan)
+`)
+</script>

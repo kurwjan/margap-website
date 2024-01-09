@@ -6,21 +6,21 @@ import Services from '../components/Services/Services.astro';
 import Contact from '../components/Contact/Contact.astro';
 import Footer from '../components/Footer.astro';
 
-import hero_image from '../images/haus_mit_gerüst.webp';
+const hero_image = '/images/test.png';
 ---
 
 <BasisLayout
-	title="MarGap - Dein Handwerker vor Ort"
-	description="MarGap ist dein Handwerker vor Ort mit Qualität und fairen Preisen. Ich kann reparieren, renovieren, Boden legen, Trockenbau machen und hat ein Zertifikat im Brandschutz."
+	title="C.L.B"
+	description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id magna ex. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id magna ex. In hac habitasse platea dictumst."
 	url="https://margap.de/"
-	image={ "https://margap.de/services" + hero_image.src }
-	alt="Das grau-weiße Haus mit Gerüsten und Leitern außenherum, wo die Firma ihren Sitz hat. Der Parkplatz vor dem Haus (außer Fahrräder) ist leer."
+	image={ "https://margap.de" + hero_image }
+	alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id magna ex. In hac habitasse platea dictumst."
 >
 	<Hero
-		heading={'Dein <span style="color: rgb(121,85,72);">Handwerker</span><br>vor Ort'} 
-		description={"Top Service alles aus einer Hand, hochwertige Baustoffe und bezahlbare Preise."} 
+		heading={'Lorem <span style="color: rgb(67, 88, 211);">Ipsum</span><br>dolor sit amet'}
+		description={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id magna ex. In hac habitasse platea dictumst."}
 		image={ hero_image } 
-		alt={"Das grau-weiße Haus mit Gerüsten und Leitern außenherum, wo die Firma ihren Sitz hat. Der Parkplatz vor dem Haus (außer Fahrräder) ist leer."}
+		alt={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id magna ex. In hac habitasse platea dictumst."}
 		button={ {"href": "#services", "text": "Meine Leistungen"} }
 		position="center"
 	/>
