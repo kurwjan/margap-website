@@ -1,9 +1,4 @@
 User-agent: *
-User-agent: AdsBot-Google
-Disallow: /_astro/*
-
-User-agent: *
 Allow: /
 
 Sitemap: https://margap.de/sitemap-0.xml
-

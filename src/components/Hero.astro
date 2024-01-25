@@ -1,10 +1,11 @@
 ---
+import { Image } from "astro:assets";
 const { heading, description, image, alt, button, position } = Astro.props
 ---
 
 <aside>
-    <div class="image-overlay">
-        <img src={ image } alt={ alt } loading="eager" decoding="sync"/>
+    <div class="image-overlay"></div>
+        <Image src={ image } alt={ alt } />
     </div>
     <div class="padding">
         <hgroup>
@@ -16,7 +17,7 @@ const { heading, description, image, alt, button, position } = Astro.props
         </hgroup>
         <a href={ button["href"] }>
             { button["text"] }
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon" height="19" width="19" viewBox="0 0 512 512"><path fill="#ffe9e9" d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM294.6 135.1c-4.2-4.5-10.1-7.1-16.3-7.1C266 128 256 138 256 150.3V208H160c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h96v57.7c0 12.3 10 22.3 22.3 22.3c6.2 0 12.1-2.6 16.3-7.1l99.9-107.1c3.5-3.8 5.5-8.7 5.5-13.8s-2-10.1-5.5-13.8L294.6 135.1z"/></svg>
+            <span class="material-icons-outlined">arrow_circle_right</span>
         </a>
     </div>
 </aside>
@@ -26,7 +27,7 @@ const { heading, description, image, alt, button, position } = Astro.props
         display: flex;
         flex-direction: column;
 
-        font-family: "Open Sans", sans-serif;
+        font-family: "Inter", sans-serif;
     }
 
     .image-overlay::after {
@@ -34,12 +35,10 @@ const { heading, description, image, alt, button, position } = Astro.props
 
         position: absolute;
 
-        transform: translate(0, -15px);
-
         width: 100%;
         height: 45em;
 
-        background: linear-gradient(to right, rgba(229, 232, 255, 1), rgba(229, 232, 255, .35));
+        background: linear-gradient(to right, rgb(25, 26, 25), rgba(25, 26, 25, 0.35));
 
         z-index: -1;
     }
@@ -49,8 +48,6 @@ const { heading, description, image, alt, button, position } = Astro.props
         position: absolute;
         object-fit: cover;
         object-position: var(--position);
-
-        transform: translate(0, -15px);
 
         width: 100%;
         height: 45em;
@@ -68,7 +65,7 @@ const { heading, description, image, alt, button, position } = Astro.props
     }
 
     hgroup {
-        color: rgb(0, 24, 49);
+        color: white;
     }
 
     h1 {
@@ -77,7 +74,7 @@ const { heading, description, image, alt, button, position } = Astro.props
         margin-top: 0;
         margin-bottom: 2rem;
 
-        font-family: "Nunito", sans-serif;
+        font-family: "Poppins", sans-serif;
     }
 
     p {
@@ -87,28 +84,27 @@ const { heading, description, image, alt, button, position } = Astro.props
     }
 
     a {
-        background-color: rgb(218, 68, 68);
-        color: rgb(255, 233, 233);
+        background-color: rgb(121,85,72);
+        color: rgb(255, 255, 255);
 
-        border-radius: 10px;
+        border-radius: 15px;
 
-        font-family: "Open Sans", sans-serif;
+        font-family: "Inter", sans-serif;
         font-size: large;
         text-decoration: none;
 
-        padding: 0.8rem 1.3rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
 
         align-items: center;
         display: flex;
         max-width: fit-content;
     }
 
-    a:hover {
-        background-color: rgb(227, 94, 94);
-    }
-
-    .icon {
-        padding-left: 0.7rem;
+    a > span {
+        padding-left: 0.5rem;
     }
 
     @media (max-width: 545px) {
@@ -129,7 +125,7 @@ const { heading, description, image, alt, button, position } = Astro.props
         }
 
         .image-overlay::after {
-            background: linear-gradient(to bottom, rgba(229, 232, 255, 1), rgba(229, 232, 255, .6));
+            background: linear-gradient(to bottom, rgb(25, 26, 25), rgba(25, 26, 25, 0.6));
         }
     }
 
