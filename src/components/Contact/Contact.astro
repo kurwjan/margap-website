@@ -15,18 +15,33 @@ const { service } = Astro.props
                 Ein Angebot anfragen
             </h3>
             <div class="row margin">
-                <input required name="Kundenname" autocomplete="name" placeholder="* Name" type="text" class="contact-input" />
-                <input required name="Kundenmail" autocomplete="email" placeholder="* E-Mail" type="email" class="contact-input" />
+                <label>
+                  <input required id="customer-name" name="Kundenname" autocomplete="name" placeholder="* Name" type="text" class="contact-input" />
+                  Erforderlich: Ihr Name
+                </label>
+                <label>
+                  <input required id="customer-mail" name="Kundenmail" autocomplete="email" placeholder="* E-Mail" type="email" class="contact-input" />
+                  Erforderlich: Ihre E-Mail im abc@def.xyz Format
+                </label>
             </div>
             <div class="row margin">
-                <input required name="Kundennummer" autocomplete="tel" placeholder="* Telefonnummer" type="tel" class="contact-input" />
-                <select required value={ service? service : "" } name="Beanspruchter Service" autocomplete="off" class="contact-input dropdown-input">
+                <label>
+                  <input required id="customer-number" name="Kundennummer" autocomplete="tel" placeholder="* Telefonnummer" type="tel" class="contact-input" />
+                  Erforderlich: Ihre Telefonnummer
+                </label>
+                <label>
+                  <select required id="service-type" value={ service? service : "" } name="Beanspruchter Service" autocomplete="off" class="contact-input dropdown-input">
                     { service? "" : <option value="" disabled selected>* Service auswählen</option> }
                     <ContactOptions selected={ service }/>
-                </select>
+                  </select>
+                  Erforderlich: Der Service den sie wollen.
+                </label>
             </div>
-            <textarea required name="Nachricht" autocomplete="off" placeholder="* Nachricht mit Details...." rows="6" cols="48" class="message margin contact-input" />
-            <input value="Anfrage einreichen" type="submit" class="button-input" />
+            <label class="margin">
+              <textarea required id="message" name="Nachricht" autocomplete="off" placeholder="* Nachricht mit Details...." rows="6" cols="48" class="message contact-input" />
+              Erforderlich: Ein Text mit mehr Details zur Ihrer Anfrage.
+            </label>
+            <input id="send-request" value="Anfrage einreichen" type="submit" class="button-input" />
 
             <Success />
         </form>
@@ -70,7 +85,7 @@ const { service } = Astro.props
         color: white;
 
         background-image:
-        url("../../images/unfertiges_haus.webp"),
+        url("/images/unfertiges_haus.webp"),
         linear-gradient(to bottom, rgb(25, 26, 25), rgba(25, 26, 25, 0.35));
         background-blend-mode: multiply;
         background-position: center;
@@ -126,8 +141,13 @@ const { service } = Astro.props
         align-items: center;
     }
 
-    input {
-        flex: auto;
+    label {
+      display: flex;
+      flex-direction: column;
+      flex: auto;
+      gap: 0.5em;
+
+      font-size: 0.8rem;
     }
 
     .margin {
@@ -229,115 +249,5 @@ const { service } = Astro.props
 </style>
 
 <script data-cfasync="false" type="text/javascript">
-    (function() {
-  // get all data in form and return object
-  function getFormData(form) {
-    var elements = form.elements;
-    var honeypot;
-
-    var fields = Object.keys(elements).filter(function(k) {
-      if (elements[k].name === "honeypot") {
-        honeypot = elements[k].value;
-        return false;
-      }
-      return true;
-    }).map(function(k) {
-      if(elements[k].name !== undefined) {
-        return elements[k].name;
-      // special case for Edge's html collection
-      }else if(elements[k].length > 0){
-        return elements[k].item(0).name;
-      }
-    }).filter(function(item, pos, self) {
-      return self.indexOf(item) == pos && item;
-    });
-
-    var formData = {};
-    fields.forEach(function(name){
-      var element = elements[name];
-      
-      // singular form elements just have one value
-      formData[name] = element.value;
-
-      // when our element has multiple items, get their values
-      if (element.length) {
-        var data = [];
-        for (var i = 0; i < element.length; i++) {
-          var item = element.item(i);
-          if (item.checked || item.selected) {
-            data.push(item.value);
-          }
-        }
-        formData[name] = data.join(', ');
-      }
-    });
-
-    // add form-specific values into the data
-    formData.formDataNameOrder = JSON.stringify(fields);
-    formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
-    formData.formGoogleSendEmail
-      = form.dataset.email || ""; // no email by default
-
-    return {data: formData, honeypot: honeypot};
-  }
-
-  function handleFormSubmit(event) {  // handles form submit without any jquery
-    event.preventDefault();           // we are submitting via xhr below
-    var form = event.target;
-    var formData = getFormData(form);
-    var data = formData.data;
-
-    // If a honeypot field is filled, assume it was done so by a spam bot.
-    if (formData.honeypot) {
-      return false;
-    }
-
-    var formButton = form.querySelector(".button-input");
-    formButton.disabled = true;
-    formButton.value = "Anfrage eingereicht";
-
-    var thankYouMessage = form.querySelector(".thankyou_message");
-    if (thankYouMessage) {
-      thankYouMessage.style.display = "block";
-    }
-
-    disableAllButtons(form);
-    var url = form.action;
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', url);
-    // xhr.withCredentials = true;
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          form.reset();
-          var formElements = form.querySelector(".form-elements")
-          if (formElements) {
-            formElements.style.display = "none"; // hide form
-          }
-          thankYouMessage.querySelector("h3").textContent = "Danke für das Einreichen! Ich werde Ihnen bald antworten.";
-        }
-    };
-    // url encode form data for sending as post data
-    var encoded = Object.keys(data).map(function(k) {
-        return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-    }).join('&');
-    xhr.send(encoded);
-  }
-  
-  function loaded() {
-    // bind to the submit event of our form
-    var forms = document.querySelectorAll("form.gform");
-    for (var i = 0; i < forms.length; i++) {
-      forms[i].addEventListener("submit", handleFormSubmit, false);
-    }
-  };
-  document.addEventListener("DOMContentLoaded", loaded, false);
-
-  function disableAllButtons(form) {
-    var buttons = form.querySelectorAll("button");
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].disabled = true;
-    }
-  }
-})();
+!function(){function e(e){e.preventDefault();var t,n,r,a,o,i=e.target,l=(a=Object.keys(r=(t=i).elements).filter(function(e){return"honeypot"!==r[e].name||(n=r[e].value,!1)}).map(function(e){return void 0!==r[e].name?r[e].name:r[e].length>0?r[e].item(0).name:void 0}).filter(function(e,t,n){return n.indexOf(e)==t&&e}),o={},a.forEach(function(e){var t=r[e];if(o[e]=t.value,t.length){for(var n=[],a=0;a<t.length;a++){var i=t.item(a);(i.checked||i.selected)&&n.push(i.value)}o[e]=n.join(", ")}}),o.formDataNameOrder=JSON.stringify(a),o.formGoogleSheetName=t.dataset.sheet||"responses",o.formGoogleSendEmail=t.dataset.email||"",{data:o,honeypot:n}),u=l.data;if(l.honeypot)return!1;var d=i.querySelector(".button-input");d.disabled=!0,d.value="Anfrage eingereicht";var s=i.querySelector(".thankyou_message");s&&(s.style.display="block"),function e(t){for(var n=t.querySelectorAll("button"),r=0;r<n.length;r++)n[r].disabled=!0}(i);var f=i.action,c=new XMLHttpRequest;c.open("POST",f),c.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),c.onreadystatechange=function(){if(4===c.readyState&&200===c.status){i.reset();var e=i.querySelector(".form-elements");e&&(e.style.display="none"),s.querySelector("h3").textContent="Danke f\xfcr das Einreichen! Ich werde Ihnen bald antworten."}};var m=Object.keys(u).map(function(e){return encodeURIComponent(e)+"="+encodeURIComponent(u[e])}).join("&");c.send(m)}document.addEventListener("DOMContentLoaded",function t(){for(var n=document.querySelectorAll("form.gform"),r=0;r<n.length;r++)n[r].addEventListener("submit",e,!1)},!1)}();
 </script>

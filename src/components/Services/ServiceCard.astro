@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from "astro:content";
 const allServices = await getCollection("services");
 ---
@@ -8,7 +7,7 @@ const allServices = await getCollection("services");
     allServices.map((service) => (
         <figure id={service.data.name.toLowerCase()}>
             <div class="image-overlay">
-                <Image src={service.data.image} alt={service.data.alt} class={service.data.name.toLowerCase()}/>
+                <img src={service.data.image} alt={service.data.alt} class={service.data.name.toLowerCase()} loading="lazy" decoding="async"/>
             </div>
             <figcaption>
                 <h2>

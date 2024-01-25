@@ -1,11 +1,10 @@
 ---
-import { Image } from "astro:assets";
 const { heading, description, image, alt, button, position } = Astro.props
 ---
 
 <aside>
     <div class="image-overlay"></div>
-        <Image src={ image } alt={ alt } />
+        <img src={ image } alt={ alt } loading="eager" decoding="sync"/>
     </div>
     <div class="padding">
         <hgroup>

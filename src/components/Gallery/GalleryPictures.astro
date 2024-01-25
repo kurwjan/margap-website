@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 const { images, descriptions } = Astro.props;
 ---
 
@@ -7,7 +6,7 @@ const { images, descriptions } = Astro.props;
     images.map((image, index) => (
         <figure>
             <div class="image-overlay">
-                <Image src={image} alt={descriptions[index]}/>
+                <img src={image} alt={descriptions[index]} loading="lazy" decoding="async"/>
             </div>
             <figcaption>
                 <hgroup>

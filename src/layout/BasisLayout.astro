@@ -8,10 +8,10 @@ import '@fontsource/meddon/400.css'
 import 'material-icons/iconfont/material-icons.css';
 import SEOComponent from "../components/SEOComponent.astro";
 
-import haus_mit_gerüst from "../images/haus_mit_gerüst.webp";
-import unfertiger_raum from "../images/unfertiger_raum.webp";
-import unfertiges_haus from "../images/unfertiges_haus.webp";
-import renoviertes_badezimmer from "../images/renoviertes_badezimmer.webp";
+var haus_mit_gerüst = "/images/haus_mit_gerüst.webp";
+var unfertiger_raum = "/images/unfertiger_raum.webp";
+var unfertiges_haus = "/images/unfertiges_haus.webp";
+var renoviertes_badezimmer = "/images/renoviertes_badezimmer.webp";
 
 const { title, description, url, image, alt } = Astro.props
 ---
@@ -33,10 +33,10 @@ const { title, description, url, image, alt } = Astro.props
 				"@type": "HomeAndConstructionBusiness",
 				"name": "MarGap - Dein Handwerker vor Ort",
 				"image": [
-					"https://margap.de" + haus_mit_gerüst.src,
-					"https://margap.de" + unfertiger_raum.src,
-					"https://margap.de" + unfertiges_haus.src,
-					"https://margap.de" + renoviertes_badezimmer.src
+					"https://margap.de" + haus_mit_gerüst,
+					"https://margap.de" + unfertiger_raum,
+					"https://margap.de" + unfertiges_haus,
+					"https://margap.de" + renoviertes_badezimmer
 				],
 				"address": {
 					"@type": "PostalAddress",

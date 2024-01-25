@@ -5,14 +5,14 @@ import Gallery from "../components/Gallery/Gallery.astro";
 import Hero from "../components/Hero.astro";
 import BasisLayout from "./BasisLayout.astro";
 
-const { service, title } = Astro.props
+const { service, title, position } = Astro.props
 ---
 
 <BasisLayout
     title={ title }
     description={ service.data.description }
     url={ "https://margap.de/services/" + service.data.name.toLowerCase()}
-    image={ "https://margap.de/services" + service.data.image.src }
+    image={ "https://margap.de" + service.data.image }
     alt={ service.data.alt }
 >
     <Hero 
@@ -21,7 +21,7 @@ const { service, title } = Astro.props
         image={service.data.image} 
         alt={service.data.alt}
         button={ {"href": "#contact", "text": "Jetzt anfragen"} }
-        position="bottom"
+        position={ position }
     />
     <Gallery images={service.data.gallery} descriptions={service.data.gallery_descriptions}/>
     <Contact service={service.data.name}/>
