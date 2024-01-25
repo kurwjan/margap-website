@@ -1,5 +1,5 @@
 ---
-const { heading, description, image, alt, button, position } = Astro.props
+const { heading, description, image, alt, position, index } = Astro.props
 ---
 
 <aside>
@@ -14,14 +14,14 @@ const { heading, description, image, alt, button, position } = Astro.props
                 { description }
             </p>
         </hgroup>
-        <a href={ button["href"] }>
-            { button["text"] }
+        <a href="#">
+            bla bla bla
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" height="19" width="19" viewBox="0 0 512 512"><path fill="#ffe9e9" d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM294.6 135.1c-4.2-4.5-10.1-7.1-16.3-7.1C266 128 256 138 256 150.3V208H160c-17.7 0-32 14.3-32 32v32c0 17.7 14.3 32 32 32h96v57.7c0 12.3 10 22.3 22.3 22.3c6.2 0 12.1-2.6 16.3-7.1l99.9-107.1c3.5-3.8 5.5-8.7 5.5-13.8s-2-10.1-5.5-13.8L294.6 135.1z"/></svg>
         </a>
     </div>
 </aside>
 
-<style define:vars={{position}}>
+<style define:vars={{position, index}}>
     aside {
         display: flex;
         flex-direction: column;
@@ -34,14 +34,12 @@ const { heading, description, image, alt, button, position } = Astro.props
 
         position: absolute;
 
-        transform: translate(0, -15px);
-
         width: 100%;
         height: 45em;
 
         background: linear-gradient(to right, rgba(229, 232, 255, 1), rgba(229, 232, 255, .35));
 
-        z-index: -1;
+        z-index: calc(var(--index) + 2);
     }
 
     img {
@@ -50,21 +48,21 @@ const { heading, description, image, alt, button, position } = Astro.props
         object-fit: cover;
         object-position: var(--position);
 
-        transform: translate(0, -15px);
-
         width: 100%;
         height: 45em;
 
-        z-index: -2;
+        z-index: calc(var(--index) + 1);
     }
 
     .padding {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
 
-        padding-top: 7rem;
-        padding-bottom: 7rem;
-        padding-left: max(5vw, 0.5rem);
+        padding: 7rem max(5vw, 0.5rem);
+
+        z-index: calc(var(--index) + 3);
     }
 
     hgroup {
@@ -116,8 +114,7 @@ const { heading, description, image, alt, button, position } = Astro.props
             padding-left: 1em;
             padding-right: 1em;
 
-            justify-items: center;
-            align-items: center;
+            justify-content: center;
         }
 
         h1 {
