@@ -4,9 +4,13 @@ description: "Ob Parkettboden, Laminat, Fliesen oder andere Böden, im Bereich d
 image: /images/leerer_raum_mit_boden.webp
 alt: "Ein ausgeleuchteter leerer Raum mit einem glänzenden Boden als Fokus. Im Hintergrund sieht man eine Heizung, großes Fenster und einen WLAN-Router."
 gallery: [
-    /images/leerer_raum_mit_boden.webp,
+    /images/badezimmer.webp,
+    /images/flur.webp,
+    /images/kueche.webp
     ]
 gallery_descriptions: [
     "",
+    "",
+    ""
 ]
 ---
